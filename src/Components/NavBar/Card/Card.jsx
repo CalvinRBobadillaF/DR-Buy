@@ -30,7 +30,7 @@ function Card(data) {
         
         // Increment the count
         Context.setCount(Context.Count + 1)
-        Context.openCheckout()
+        
     }
     
     const showProduct = (productDetail) => {

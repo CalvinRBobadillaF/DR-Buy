@@ -88,11 +88,24 @@ function NavBar() {
         </ul>
 
         {/* Right menu */}
-        <ul className="flex items-center gap-3">
+        <ul className="flex items-center gap-3 fixed top-0 bg-gray-300">
           <li>
             <NavLink to="/sign-in" className="hidden font-light md:block">
               Bobadilla@xample.com
             </NavLink>
+          </li>
+
+          <li className="font-semibold text-2xl fixed ml-39  top-2 md:block">
+            <NavLink to="/" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
+              RD-Buy
+            </NavLink>
+          </li>
+
+          <li className="">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-8 w-8 fixed right-3 top-3">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+</svg>
+
           </li>
 
           <li className="hidden md:block">

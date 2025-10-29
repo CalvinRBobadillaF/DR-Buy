@@ -39,9 +39,19 @@ function CheckoutSideMenu() {
     const totalPrice = context.cartProducts.reduce((sum, product) => 
         sum + product.price * (product.quantity || 1), 0
       )
+
+      if (context.cartProducts == 0) {
+        return(
+            <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col justify-center fixed right-0 bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
+            
+                <p className="flex justify-center text-lg">No tienes productos agregados ahora mismo. </p>
+            
+        </aside> 
+        )
+      }
     
     return(
-        <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-[full] md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col fixed right-0 bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
+        <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col fixed right-0 bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
             <div className="flex justify-between m-4">
                 <p className="bg-gray-400 border border-transparent rounded-sm p-1 font-medium text-x">My Order</p>
                 <button onClick={() => context.closeCheckout()} aria-label="Close checkout menu">
