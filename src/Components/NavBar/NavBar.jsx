@@ -2,13 +2,28 @@ import { NavLink } from "react-router-dom";
 import { WaggonContext } from "../../Context/Context";
 import { useContext } from "react";
 
-function NavBar() {
-  const Context = useContext(WaggonContext);
-  const ActiveStyle = "underline";
+import SideMenu from "../SideMenu/SideMenu";
 
-  return (
+function NavBar() {
+
+  const Context = useContext(WaggonContext);
+  const isMenuOpen = Context.isSideMenuOpen
+  console.log(isMenuOpen)
+  const ActiveStyle = "flex";
+
+  
+  
+
+
+  if(isMenuOpen == true) {
+    return <SideMenu/> 
+  }   
+  
+  
+  return(
     
-    <nav className="  justify-between items-center fixed bg-gray-200 md:sticky lg:sticky z-10 w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0">
+    <nav className=" justify-between items-center fixed bg-gray-200 md:sticky lg:sticky z-10 w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0 " 
+    >
       <div className="  flex justify-between items-center">
         
         <ul className="flex justify-between items-center w-full lg:w-150 px-4 text-xs">
@@ -87,10 +102,10 @@ function NavBar() {
           
         </ul>
 
-        {/* Right menu */}
-        <ul className="flex items-center gap-3 fixed top-0 bg-gray-300">
+        {/* Right menu */} 
+        <ul className='md:flex items-center  gap-3 fixed top-0 left-0 md:left-10 bg-gray-300'>
           <li>
-            <NavLink to="/sign-in" className="hidden font-light md:block">
+            <NavLink to="/sign-in" className={isMenuOpen ? 'flex z-10 sticky px-3 py-108 ' : 'hidden md:flex'}>
               Bobadilla@xample.com
             </NavLink>
           </li>
@@ -101,7 +116,7 @@ function NavBar() {
             </NavLink>
           </li>
 
-          <li className="">
+          <li className="" onClick={Context.openAndCloseMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-8 w-8 fixed right-3 top-3">
   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 </svg>
@@ -109,19 +124,19 @@ function NavBar() {
           </li>
 
           <li className="hidden md:block">
-            <NavLink to="/my-order" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
+            <NavLink to="/my-order" className={isMenuOpen ? 'flex' : 'hidden md:flex'}>
               My-order
             </NavLink>
           </li>
 
-          <li className="hidden md:block">
-            <NavLink to="/my-orders" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
+          <li className=" md:block">
+            <NavLink to="/my-orders" className={isMenuOpen ? 'flex' : 'hidden md:flex'}>
               My-orders
             </NavLink>
           </li>
 
           <li className="hidden md:block">
-            <NavLink to="/my-account" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
+            <NavLink to="/my-account" className={isMenuOpen ? 'flex' : 'hidden md:flex'}>
               My-Account
             </NavLink>
           </li>
@@ -134,9 +149,14 @@ function NavBar() {
           </li>
         </ul>
       </div>
-    </nav>
+    </nav> 
+
+    
+
+
   );
 }
+
 
 export default NavBar;
 

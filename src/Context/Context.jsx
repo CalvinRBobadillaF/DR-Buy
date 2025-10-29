@@ -79,6 +79,11 @@ export const WaggonProvider = ({ children }) => {
     const closeCheckout = () => setCheckoutOpen(false)
     const changeCheckout = ( ) => setCheckoutOpen(!isCheckoutOpen)
 
+    //SideMenu
+
+    const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
+    const openAndCloseMenu = () => setIsSideMenuOpen(!isSideMenuOpen)
+
     //Cart - Orders
     const [order, setOrder] = useState([])
     
@@ -104,6 +109,9 @@ export const WaggonProvider = ({ children }) => {
             toggleTheme,
             theme,
             changeCheckout,
+            openAndCloseMenu,
+            isSideMenuOpen,
+            setIsSideMenuOpen,
             setOrder
         }}>
         {children}
