@@ -59,7 +59,20 @@ function SideMenu() {
               Sign In
             </NavLink>
           </li>
+
+          <li >
+            <NavLink to="/" onClick={Context.openAndCloseMenu} >
+              Home
+            </NavLink>
+          </li>
         </ul>
+        <div className="flex justify-between items-center p-4 w-full border-t fixed bottom-3">
+          <h2>
+            <NavLink to="/sign-in" className= 'text-lg font-semibold '>
+              Bobadilla@xample.com
+            </NavLink>
+          </h2>
+       </div>
       </aside>
     </>
   );

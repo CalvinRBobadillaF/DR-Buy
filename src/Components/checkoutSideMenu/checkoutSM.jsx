@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { WaggonContext } from "../../Context/Context"
 import OrderCard from "../OrderCard/OrderCard"
 
@@ -31,7 +31,7 @@ function CheckoutSideMenu() {
         }
 
         context.setOrder([...context.order, orderToAdd])
-        context.setCartProducts([])
+     //   context.setCartProducts([]) Para evitar que sea 0
 
     }
     
@@ -51,7 +51,7 @@ function CheckoutSideMenu() {
       }
     
     return(
-        <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col fixed right-0 bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
+        <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col fixed right-0 z-20 bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
             <div className="flex justify-between m-4">
                 <p className="bg-gray-400 border border-transparent rounded-sm p-1 font-medium text-x">My Order</p>
                 <button onClick={() => context.closeCheckout()} aria-label="Close checkout menu">
@@ -83,17 +83,17 @@ function CheckoutSideMenu() {
                         <p className="font-medium">Total:</p>
                         <p className="font-bold">${totalPrice.toFixed(2)}</p>
                     </div>
-                    <Link to='my-orders/latest'>
+                    <NavLink to='my-order'>
                     <button 
                         className="w-full bg-black text-white py-3 rounded-lg font-medium"
                         onClick={() => {
                             handleCheckout()
-                            
+                            context.closeCheckout()
                         }}
                     >
                         Checkout
                     </button>
-                    </Link>
+                    </NavLink>
                 </div>
             )}
         </aside> 

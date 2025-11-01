@@ -24,17 +24,17 @@ function NavBar() {
     
     <nav className=" justify-between items-center fixed bg-gray-200 md:sticky lg:sticky z-10 w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0 " 
     >
-      <div className="  flex justify-between items-center">
+      <div className="  flex justify-between items-center ">
         
-        <ul className="flex justify-between items-center w-full lg:w-150 px-4 text-xs">
-          <li className="font-semibold text-lg hidden md:block">
+        <ul className="flex justify-between items-center w-full   lg:w-150 px-4 text-xs">
+          <li className="font-semibold text-lg hidden md:block" onClick={Context.closeCheckout}>
             <NavLink to="/" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
               RD-Buy
             </NavLink>
           </li>
 
           
-          <li>
+          <li onClick={Context.closeCheckout}>
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -48,7 +48,7 @@ function NavBar() {
             </NavLink>
           </li>
 
-          <li>
+          <li onClick={Context.closeCheckout}>
             <NavLink
               to="/electronics"
               className={({ isActive }) =>
@@ -72,7 +72,7 @@ function NavBar() {
             
           </li>
 
-          <li>
+          <li onClick={Context.closeCheckout}>
             <NavLink
               to="/clothes"
               className={({ isActive }) =>
@@ -86,7 +86,7 @@ function NavBar() {
             </NavLink>
           </li>
 
-          <li>
+          <li onClick={Context.closeCheckout}>
             <NavLink
               to="/furniture"
               className={({ isActive }) =>

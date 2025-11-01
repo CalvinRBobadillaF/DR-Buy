@@ -39,12 +39,20 @@ function AppRoutes() {
 /* Componente que consume el contexto — debe ser hijo de WaggonProvider */
 function AppContent() {
   const { theme } = useContext(WaggonContext);
+  let context = useContext(WaggonContext)
+  let logged = context.isLogged
 
   // Usa valores claros y legibles
   const backgroundColor = theme === "dark" ? "#000000" : "#ffffff";
   const color = theme === "dark" ? "#ffffff" : "#333333";
 
-
+  if (logged == false) {
+    return(
+      <>
+      <SignIn />
+      </>
+    )
+  }
   return (
     <div style={{ backgroundColor, color, minHeight: "100vh", overflowY: 'hidden' }}>
       <BrowserRouter>
@@ -66,6 +74,10 @@ function AppContent() {
 
 /* App: proveedor envolviendo el contenido */
 function App() {
+  
+
+  
+
   return (
     <WaggonProvider>
       <AppContent />

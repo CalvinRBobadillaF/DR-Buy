@@ -6,9 +6,15 @@ export const WaggonProvider = ({ children }) => {
     //Shopping Waggon - counter
     const [Count, setCount] = useState(0)
 
+    const [isLogged, setIsLogged] = useState(false)
+
     const [theme, setTheme] = useState('light')
 
-    
+    console.log(Count)
+
+    const logUser = () => {
+        setIsLogged(true)
+    }
 
 
     const toggleTheme = () => {
@@ -112,6 +118,9 @@ export const WaggonProvider = ({ children }) => {
             openAndCloseMenu,
             isSideMenuOpen,
             setIsSideMenuOpen,
+            isLogged,
+            setIsLogged,
+            logUser,
             setOrder
         }}>
         {children}

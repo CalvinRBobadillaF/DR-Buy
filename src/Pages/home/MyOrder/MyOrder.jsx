@@ -5,8 +5,13 @@ import { WaggonContext } from "../../../Context/Context"
 import { Link } from "react-router-dom"
 function MyOrder() {
     let context = useContext(WaggonContext)
-    console.log(context.order?.slice(-1)[0].products.map)
-    const currentPath = window.location.pathname
+    
+
+    if (context.order == 0) {
+        return(
+            <div>No has tenido una orden reciente ahora mismo, crea una para verla.</div>
+        )
+      } 
     return(
        <Layout>
         <div className="flex justify-between m-3">
@@ -40,7 +45,8 @@ function MyOrder() {
        </Layout>
         
     )
-       
 }
+       
+
 
 export default MyOrder 
