@@ -54,11 +54,7 @@ function SideMenu() {
               My Order
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/sign-in" onClick={Context.openAndCloseMenu}>
-              Sign In
-            </NavLink>
-          </li>
+          
 
           <li >
             <NavLink to="/" onClick={Context.openAndCloseMenu} >

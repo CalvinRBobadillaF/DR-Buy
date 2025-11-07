@@ -5,7 +5,10 @@ import { WaggonContext } from "../../../Context/Context"
 import { Link } from "react-router-dom"
 function MyOrder() {
     let context = useContext(WaggonContext)
-    
+    console.log(context.cartProducts)
+    const totalPrice = context.cartProducts.reduce((sum, product) => 
+        sum + product.price * (product.quantity || 1), 0
+      )
 
     if (context.order == 0) {
         return(
@@ -41,6 +44,13 @@ function MyOrder() {
                         />
                     ))
                 }
+
+                <p className="flex justify-center">Total de la orden: ${totalPrice.toFixed(2)}</p>
+            </div>
+
+            <div>
+                <button className="px-15 py-5 bg-blue-950 text-amber-50 absolute bottom-25 right-15 left-15 rounded-md">Pay now</button>
+
             </div>
        </Layout>
         

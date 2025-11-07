@@ -10,6 +10,10 @@ export const WaggonProvider = ({ children }) => {
 
     const [theme, setTheme] = useState('light')
 
+    const [userData, setUserData] = useState({})
+
+    
+
     console.log(Count)
 
     const logUser = () => {
@@ -121,10 +125,13 @@ export const WaggonProvider = ({ children }) => {
             isLogged,
             setIsLogged,
             logUser,
+            userData,
+            setUserData,
             setOrder
         }}>
         {children}
         </WaggonContext.Provider>
     )
 }
+
 

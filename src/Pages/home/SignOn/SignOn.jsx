@@ -39,7 +39,7 @@ function SignIn() {
     <div className="flex items-center justify-center mt-20">
       <div className="w-full max-w-md p-8 space-y-6">
         <h1 className="text-3xl font-bold text-center text-gray-900">
-          {localStorage.getItem('userData') ? 'Iniciar Sesion' : 'Registrate'}
+          {localStorage.getItem('userData') ? 'Bienvenido de nuevo' : 'Iniciar Sesión'}
         </h1>
 
         <form className="space-y-6">
@@ -90,7 +90,7 @@ function SignIn() {
               type="button"
               className="w-full px-4 py-2 font-semibold text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700"
             >
-              {localStorage.getItem('userData') ? 'Iniciar Sesion' : 'Ingresar'}
+              Ingresar
             </button>
 
             <button

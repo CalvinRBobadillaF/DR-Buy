@@ -23,6 +23,8 @@ function CheckoutSideMenu() {
     }
 
     const handleCheckout = () => {
+        
+
         const orderToAdd = {
             date: '27.02.25',
             products: context.cartProducts,
@@ -30,8 +32,10 @@ function CheckoutSideMenu() {
             totalPrice: totalPrice
         }
 
+        
+
         context.setOrder([...context.order, orderToAdd])
-     //   context.setCartProducts([]) Para evitar que sea 0
+       // context.setCartProducts([]) 
 
     }
     
