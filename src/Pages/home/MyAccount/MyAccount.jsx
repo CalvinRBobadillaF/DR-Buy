@@ -4,6 +4,8 @@ import { WaggonContext } from "../../../Context/Context"
 
 function MyAccount() {
   const context = useContext(WaggonContext)
+  const storedUser = localStorage.getItem('userData')
+  const parsedUser = JSON.parse(storedUser)
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br ">
@@ -22,17 +24,17 @@ function MyAccount() {
         <div className="space-y-4">
           <div className="border border-gray-200 rounded-xl p-4 hover:shadow-sm transition-all">
             <p className="text-sm text-gray-500">Full Name</p>
-            <p className="text-lg font-medium text-gray-800">{context.userData.name || "—"}</p>
+            <p className="text-lg font-medium text-gray-800">{parsedUser.name || "—"}</p>
           </div>
 
           <div className="border border-gray-200 rounded-xl p-4 hover:shadow-sm transition-all">
             <p className="text-sm text-gray-500">Date of Birth</p>
-            <p className="text-lg font-medium text-gray-800">{context.userData.birth || "—"}</p>
+            <p className="text-lg font-medium text-gray-800">{parsedUser.birth || "—"}</p>
           </div>
 
           <div className="border border-gray-200 rounded-xl p-4 hover:shadow-sm transition-all">
             <p className="text-sm text-gray-500">Country</p>
-            <p className="text-lg font-medium text-gray-800">{context.userData.country || "—"}</p>
+            <p className="text-lg font-medium text-gray-800">{parsedUser.country || "—"}</p>
           </div>
         </div>
 

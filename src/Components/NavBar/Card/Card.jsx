@@ -40,10 +40,10 @@ function Card(data) {
     
     return (
         <div 
-            className="bg-white ml-0.5 cursor-pointer w-56 lg:h-60 sm:h-80 rounded-lg sm:mb-6 " 
+            className="bg-white w-56 ml-0.5 cursor-pointer  lg:h-60 sm:h-80 rounded-lg sm:mb-6 " 
             onClick={() => showProduct(data.data)}
         >
-            <figure className="relative m-3 mb-0 w-96 h-4/5  ">
+            <figure className="relative m-3 mb-0 w-100 h-4/5  ">
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black m-2 text-m lg:text-lg px-3 py-0.5 ">
                     {data.data.category.name}
                 </span>
@@ -61,7 +61,7 @@ function Card(data) {
                     </svg>
                 </button>
             </figure>
-            <p className="flex justify-between ml-3 bg-gray-200 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-96">
+            <p className="flex justify-between ml-3 bg-gray-200 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-100">
                 <span className=" text">{data.data.title}</span>
                 <span className="font-medium ">${data.data.price}</span>
             </p>

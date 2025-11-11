@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { WaggonContext } from '../../../Context/Context'
 
-function SignIn() {
+function SignOn() {
   const context = useContext(WaggonContext)
 
   const [userName, setUserName] = useState('')
@@ -45,7 +45,7 @@ function SignIn() {
         <form className="space-y-6">
           {/* Campos */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email o Usuario:</label>
+            <label className="block text-sm font-medium text-gray-700">Email or user:</label>
             <input
               onChange={(e) => setUserName(e.target.value)}
               type="text"
@@ -55,7 +55,7 @@ function SignIn() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Tu contraseña:</label>
+            <label className="block text-sm font-medium text-gray-700">Your password:</label>
             <input
               onChange={(e) => setUserPassword(e.target.value)}
               type="password"
@@ -65,7 +65,7 @@ function SignIn() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Tu fecha de nacimiento:</label>
+            <label className="block text-sm font-medium text-gray-700">Your date of birth:</label>
             <input
               onChange={(e) => setUserBirth(e.target.value)}
               type="date"
@@ -74,7 +74,7 @@ function SignIn() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Tu país:</label>
+            <label className="block text-sm font-medium text-gray-700">Your country:</label>
             <input
               onChange={(e) => setUserCountry(e.target.value)}
               type="text"
@@ -90,7 +90,7 @@ function SignIn() {
               type="button"
               className="w-full px-4 py-2 font-semibold text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700"
             >
-              Ingresar
+              Register
             </button>
 
             <button
@@ -108,7 +108,7 @@ function SignIn() {
               type="button"
               className="w-full px-4 py-2 font-medium text-gray-700 bg-gray-100 rounded-md shadow-sm hover:bg-gray-200"
             >
-              Ingresar como invitado
+              Log in as guest
             </button>
           </div>
         </form>
@@ -117,4 +117,4 @@ function SignIn() {
   )
 }
 
-export default SignIn
+export default SignOn

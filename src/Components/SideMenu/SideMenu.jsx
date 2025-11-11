@@ -39,25 +39,25 @@ function SideMenu() {
         </div>
 
         <ul className="flex flex-col gap-4 p-6">
-          <li>
-            <NavLink to="/my-account" onClick={Context.openAndCloseMenu}>
-              My Account
+          <li >
+            <NavLink to="/my-account" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
+            My Account
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/my-orders" onClick={Context.openAndCloseMenu}>
+          <li >
+            <NavLink to="/my-orders" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
               My Orders
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/my-order" onClick={Context.openAndCloseMenu}>
+          <li >
+            <NavLink to="/my-order" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
               My Order
             </NavLink>
           </li>
           
 
-          <li >
-            <NavLink to="/" onClick={Context.openAndCloseMenu} >
+          <li onClick={Context.closeDetail }>
+            <NavLink to="/" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }} >
               Home
             </NavLink>
           </li>

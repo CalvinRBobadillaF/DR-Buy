@@ -8,8 +8,7 @@ function CheckoutSideMenu() {
     console.log('Cart: ', context.cartProducts)
     
     const handleDelete = (id) => {
-        // This line had an error - you were trying to filter context.addProductToCart
-        // which is a function, not an array
+        
         const filteredProducts = context.cartProducts.filter(product => product.id != id)
         context.setCartProducts(filteredProducts)
 
@@ -29,7 +28,8 @@ function CheckoutSideMenu() {
             date: '27.02.25',
             products: context.cartProducts,
             totalProducts: context.cartProducts.length,
-            totalPrice: totalPrice
+            totalPrice: totalPrice,
+            id: `${Date.now()}-${Math.floor(Math.random() * 10000)}`
         }
 
         
@@ -40,29 +40,31 @@ function CheckoutSideMenu() {
     }
     
     // Calculate total price from cart products
-    const totalPrice = context.cartProducts.reduce((sum, product) => 
+   const totalPrice = context.cartProducts.reduce((sum, product) => 
         sum + product.price * (product.quantity || 1), 0
-      )
+      ) 
+
+
 
       if (context.cartProducts == 0) {
         return(
-            <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col justify-center fixed right-0 bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
+            <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)]  flex-col justify-center fixed right-0 bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
             
-                <p className="flex justify-center text-lg">No tienes productos agregados ahora mismo. </p>
+                <div className="flex items-center justify-center h-screen">
+      <p className="text-center text-lg text-gray-700">
+        You don't have any products yet, start shopping!
+      </p>
+    </div>
             
         </aside> 
         )
       }
     
     return(
-        <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col fixed right-0 z-20 bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
+        <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '}md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col fixed right-0  bg-white md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
             <div className="flex justify-between m-4">
                 <p className="bg-gray-400 border border-transparent rounded-sm p-1 font-medium text-x">My Order</p>
-                <button onClick={() => context.closeCheckout()} aria-label="Close checkout menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clipRule="evenodd" />
-                    </svg>
-                </button>
+                
             </div>
             
             <div className="flex-1 px-4">

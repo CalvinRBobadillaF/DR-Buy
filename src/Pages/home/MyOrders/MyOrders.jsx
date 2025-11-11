@@ -5,21 +5,26 @@ import OrdersCard from "../../../Components/OrdersCard/OrdersCard"
 import { Link } from "react-router-dom"
 function MyOrders() {
     const context = useContext(WaggonContext)
-    console.log(context.order)
+    console.log('ordenes:', context.order)
 
-    if (context.order == 0) {
+    if (context.orderPaid == 0) {
         return(
-            <div>No has tenido una orden reciente ahora mismo, crea una para verla.</div>
+            <div className="flex items-center justify-center h-screen">
+      <p className="text-center text-lg text-gray-700">
+        You don't have a recent order, create a new one!
+      </p>
+    </div>
         )
     }
+
     
     return(
         
         <Layout>
             
-            {context.order.map((order, index) => (
-                <Link key={index} to={`/my-orders/`}> 
-                <OrdersCard totalPrice={order.totalPrice} totalProducts={order.totalProducts}/>+
+            {context.orderPaid.map((order, index) => (
+                <Link key={index} to={`/my-order/`}> 
+                <OrdersCard totalPrice={order.totalPrice} totalProducts={order.totalProducts} />
                 </Link>
             ))}
             

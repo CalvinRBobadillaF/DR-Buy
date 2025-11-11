@@ -16,6 +16,8 @@ import Electronics from "../Categories/Electronics";
 import Clothes from "../Categories/Clothes";
 import Furniture from "../Categories/furniture";
 import { useContext } from "react";
+import SignOn from "../SignOn/SignOn";
+import PaymentComponent from "../../../Components/Payment/Payment";
 
 /* AppRoutes: OK que lo declares fuera, pero recuerda que useRoutes()
    debe ejecutarse dentro de un Router — y lo estarás usando dentro de <BrowserRouter>. */
@@ -31,6 +33,7 @@ function AppRoutes() {
     { path: "/clothes", element: <Clothes /> },
     { path: "/furniture", element: <Furniture /> },
     { path: "*", element: <NotFound /> },
+    { path: "/payment", element: <PaymentComponent/> }
   ]);
 
   return routes;
@@ -42,17 +45,30 @@ function AppContent() {
   let context = useContext(WaggonContext)
   let logged = context.isLogged
 
+  const storedUser = localStorage.getItem('userData')
+
   // Usa valores claros y legibles
   const backgroundColor = theme === "dark" ? "#000000" : "#ffffff";
   const color = theme === "dark" ? "#ffffff" : "#333333";
 
-  if (logged == false) {
+
+  if (logged == false && storedUser ) {
     return(
       <>
       <SignIn />
       </>
     )
   }
+
+  if (logged == false) {
+    return(
+      <>
+      <SignOn/>
+      </>
+    )
+  }
+
+  
   return (
     <div style={{ backgroundColor, color, minHeight: "100vh", overflowY: 'hidden' }}>
       <BrowserRouter>

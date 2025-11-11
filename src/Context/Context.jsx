@@ -12,7 +12,7 @@ export const WaggonProvider = ({ children }) => {
 
     const [userData, setUserData] = useState({})
 
-    
+    const [orderPaid, setOrderPaid] = useState([])
 
     console.log(Count)
 
@@ -87,12 +87,16 @@ export const WaggonProvider = ({ children }) => {
     const [isCheckoutOpen, setCheckoutOpen] = useState(false)
     const openCheckout = () => setCheckoutOpen(true)
     const closeCheckout = () => setCheckoutOpen(false)
-    const changeCheckout = ( ) => setCheckoutOpen(!isCheckoutOpen)
+    const changeCheckout = () => setCheckoutOpen(!isCheckoutOpen)
 
     //SideMenu
 
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
+    
+    const closeMenu = () => setIsSideMenuOpen(false)
+    const openMenu = () => setIsSideMenuOpen(true)
     const openAndCloseMenu = () => setIsSideMenuOpen(!isSideMenuOpen)
+    
 
     //Cart - Orders
     const [order, setOrder] = useState([])
@@ -107,9 +111,13 @@ export const WaggonProvider = ({ children }) => {
             showDetail,
             setShowDetail,
             cartProducts,
-            // Override the setter with our version
+            orderPaid,
+            setOrderPaid,
+            closeMenu,
+            openMenu,
+            changeCheckout,
             setCartProducts: legacySetCartProducts,
-            // Provide the new function
+            
             addProductToCart,
             isCheckoutOpen,
             setCheckoutOpen,
@@ -118,7 +126,7 @@ export const WaggonProvider = ({ children }) => {
             order,
             toggleTheme,
             theme,
-            changeCheckout,
+            
             openAndCloseMenu,
             isSideMenuOpen,
             setIsSideMenuOpen,

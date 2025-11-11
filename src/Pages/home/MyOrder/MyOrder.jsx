@@ -1,24 +1,30 @@
 import { useContext } from "react"
+import { NavLink } from "react-router-dom"
 import Layout from "../../../Components/NavBar/Layout/Layout"
 import OrderCard from "../../../Components/OrderCard/OrderCard"
 import { WaggonContext } from "../../../Context/Context"
 import { Link } from "react-router-dom"
 function MyOrder() {
     let context = useContext(WaggonContext)
-    console.log(context.cartProducts)
+    
     const totalPrice = context.cartProducts.reduce((sum, product) => 
         sum + product.price * (product.quantity || 1), 0
       )
 
     if (context.order == 0) {
-        return(
-            <div>No has tenido una orden reciente ahora mismo, crea una para verla.</div>
-        )
-      } 
+  return (
+    <div className="flex items-center justify-center h-screen  ">
+      <p className="text-center  text-lg  text-gray-700 ">
+       You don't have a recent order, create a new one!
+      </p>
+    </div>
+  );
+}
+
     return(
        <Layout>
         <div className="flex justify-between m-3">
-            <Link to="/my-orders">
+            <Link to="/">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             
@@ -29,7 +35,7 @@ function MyOrder() {
             <h1>My order</h1>
 
             </div>
-        <div className="flex-1 px-4">
+        <div className="flex flex-col ml-5">
             
                 {
                     context.order?.slice(-1)[0].products.map(product => (
@@ -45,13 +51,14 @@ function MyOrder() {
                     ))
                 }
 
-                <p className="flex justify-center">Total de la orden: ${totalPrice.toFixed(2)}</p>
+                <p className="flex justify-center">Total amount: ${totalPrice.toFixed(2)}</p>
             </div>
-
+<NavLink to='/payment'>
             <div>
                 <button className="px-15 py-5 bg-blue-950 text-amber-50 absolute bottom-25 right-15 left-15 rounded-md">Pay now</button>
 
             </div>
+            </NavLink>
        </Layout>
         
     )

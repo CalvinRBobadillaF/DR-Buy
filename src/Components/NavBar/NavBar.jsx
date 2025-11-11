@@ -22,20 +22,21 @@ function NavBar() {
   
   return(
     
-    <nav className=" justify-between items-center fixed bg-gray-200 md:sticky lg:sticky z-10 w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0 " 
+    <nav className=" justify-between items-center fixed bg-gray-200 md:sticky lg:sticky   z-16  w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0 " 
     >
       <div className="  flex justify-between items-center ">
         
         <ul className="flex justify-between items-center w-full   lg:w-150 px-4 text-xs">
-          <li className="font-semibold text-lg hidden md:block" onClick={Context.closeCheckout}>
+          <li className="font-semibold text-lg hidden md:block" onClick={ Context.closeDetail}>
             <NavLink to="/" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
               RD-Buy
             </NavLink>
           </li>
 
           
-          <li onClick={Context.closeCheckout}>
+          <li onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); }}>
             <NavLink
+            
               to="/"
               className={({ isActive }) =>
                 `${isActive ? ActiveStyle : ""} flex flex-col items-center justify-center text-xs md:text-sm`
@@ -48,8 +49,9 @@ function NavBar() {
             </NavLink>
           </li>
 
-          <li onClick={Context.closeCheckout}>
+          <li onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); }}>
             <NavLink
+            
               to="/electronics"
               className={({ isActive }) =>
                 `${isActive ? ActiveStyle : ""} flex flex-col items-center justify-center text-xs md:text-sm`
@@ -62,7 +64,7 @@ function NavBar() {
             </NavLink>
           </li>
 
-          <li  onClick={Context.changeCheckout} className="flex flex-col items-center justify-center text-xs md:text-sm">
+          <li onClick={Context.changeCheckout}  className="flex flex-col items-center justify-center text-xs md:text-sm">
             
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-6 w-6 mb-1">
   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
@@ -72,8 +74,9 @@ function NavBar() {
             
           </li>
 
-          <li onClick={Context.closeCheckout}>
+          <li onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); }}>
             <NavLink
+            
               to="/clothes"
               className={({ isActive }) =>
                 `${isActive ? ActiveStyle : ""} flex flex-col items-center justify-center text-xs md:text-sm`
@@ -86,8 +89,9 @@ function NavBar() {
             </NavLink>
           </li>
 
-          <li onClick={Context.closeCheckout}>
+          <li onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); }}>
             <NavLink
+            
               to="/furniture"
               className={({ isActive }) =>
                 `${isActive ? ActiveStyle : ""} flex flex-col items-center justify-center text-xs md:text-sm`
@@ -103,7 +107,7 @@ function NavBar() {
         </ul>
 
         {/* Right menu */} 
-        <ul className='md:flex items-center  gap-3 fixed top-0 left-0 md:left-10 bg-gray-300'>
+        <ul className='md:flex items-center   gap-3 fixed top-0 left-0 md:left-10 bg-gray-300'>
           <li>
             <NavLink to="/sign-in" className={isMenuOpen ? 'flex z-10 sticky px-3 py-108 ' : 'hidden md:flex'}>
               Bobadilla@xample.com
@@ -116,7 +120,7 @@ function NavBar() {
             </NavLink>
           </li>
 
-          <li className="" onClick={Context.openAndCloseMenu}>
+          <li className="" onClick={Context.openMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-8 w-8 fixed right-3 top-3">
   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 </svg>
