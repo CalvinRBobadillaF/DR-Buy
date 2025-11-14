@@ -23,7 +23,7 @@ function Home() {
     }, [])
     return (
         <Layout>
-            <div className="grid md:grid-cols-4 gap-4 grid-cols-1 w-100   lg:grid-cols-4 xl:grid-cols-5 " >
+            <div className="grid gap-4 md:w-[90vw] sm:grid-cols-3 sm:w-[90vw] grid-cols-1 w-100 xl:grid-cols-4 " >
             {
                 items?.map((item => (<Card key={item.id} data={item}/>)
                 

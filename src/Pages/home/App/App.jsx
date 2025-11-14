@@ -46,10 +46,13 @@ function AppContent() {
   let logged = context.isLogged
 
   const storedUser = localStorage.getItem('userData')
+  const storedUserData = JSON.parse(storedUser)
+  console.log(storedUserData)
 
   // Usa valores claros y legibles
-  const backgroundColor = theme === "dark" ? "#000000" : "#ffffff";
-  const color = theme === "dark" ? "#ffffff" : "#333333";
+  const backgroundColor = theme === "Dark" ? "#343a40 " : "#ffffff ";
+ 
+  const color = theme === "Dark" ? "#e9ecef " : "#343a40 ";
 
 
   if (logged == false && storedUser ) {
@@ -60,7 +63,7 @@ function AppContent() {
     )
   }
 
-  if (logged == false) {
+  if (logged == false ) {
     return(
       <>
       <SignOn/>
@@ -70,7 +73,15 @@ function AppContent() {
 
   
   return (
-    <div style={{ backgroundColor, color, minHeight: "100vh", overflowY: 'hidden' }}>
+    <div style={{
+    backgroundColor,
+    color,
+    minHeight: "100vh",
+    overflowY: "scroll",
+    overflowX: "hidden",
+    transition: "background-color 0.5s ease-in-out",
+    boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)"
+  }}>
       <BrowserRouter>
       <NavBar />
         <ToggleTheme />

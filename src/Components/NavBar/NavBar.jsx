@@ -10,7 +10,7 @@ function NavBar() {
   const isMenuOpen = Context.isSideMenuOpen
   console.log(isMenuOpen)
   const ActiveStyle = "flex";
-
+  
   
   
 
@@ -22,7 +22,7 @@ function NavBar() {
   
   return(
     
-    <nav className=" justify-between items-center fixed bg-gray-200 md:sticky lg:sticky   z-16  w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0 " 
+    <nav className={`${Context.theme == 'Dark' ? 'justify-between items-center fixed  md:sticky lg:sticky  transition-colors duration-500 ease-in-out shadow-lg bg-gray-800   z-16  w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0' : 'justify-between items-center fixed  md:sticky lg:sticky bg-gray-200 transition-colors duration-500 ease-in-out shadow-lg z-16  w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0'} `}
     >
       <div className="  flex justify-between items-center ">
         
@@ -114,7 +114,7 @@ function NavBar() {
             </NavLink>
           </li>
 
-          <li className="font-semibold text-2xl fixed ml-39  top-2 md:block">
+          <li className="font-semibold text-2xl fixed ml-[40vw]  top-2 md:block">
             <NavLink to="/" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
               RD-Buy
             </NavLink>

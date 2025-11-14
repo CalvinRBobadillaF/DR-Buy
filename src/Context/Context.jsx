@@ -8,7 +8,7 @@ export const WaggonProvider = ({ children }) => {
 
     const [isLogged, setIsLogged] = useState(false)
 
-    const [theme, setTheme] = useState('light')
+    const [theme, setTheme] = useState('Dark')
 
     const [userData, setUserData] = useState({})
 
@@ -22,7 +22,7 @@ export const WaggonProvider = ({ children }) => {
 
 
     const toggleTheme = () => {
-        setTheme((prev) => prev === 'light' ? 'dark' : 'light' )
+        setTheme((prev) => prev === 'Light' ? 'Dark' : 'Light' )
     }
 
     

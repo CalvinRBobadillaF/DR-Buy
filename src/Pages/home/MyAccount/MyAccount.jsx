@@ -1,47 +1,112 @@
 import { useContext } from "react"
 import { WaggonContext } from "../../../Context/Context"
-//import { User } from "lucide-react" // Icono de perfil temporal
 
 function MyAccount() {
-  const context = useContext(WaggonContext)
   const storedUser = localStorage.getItem('userData')
   const parsedUser = JSON.parse(storedUser)
+  const { theme, toggleTheme } = useContext(WaggonContext)
+  console.log(theme)
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br ">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md border border-amber-100">
+    <div
+      className={`
+        flex items-center justify-center min-h-screen
+        transition-colors duration-700 ease-in-out
+        
+      `}
+    >
+      <div
+        className={`
+          w-full max-w-md p-8 rounded-2xl border
+          transition-colors duration-700 ease-in-out shadow-xl
+          ${theme === 'Dark'
+            ? 'bg-gray-800 border-gray-700 text-gray-100'
+            : 'bg-white border-gray-200 text-gray-800'
+          }
+        `}
+      >
         {/* Imagen o icono de perfil */}
         <div className="flex flex-col items-center mb-6">
-          <div className="w-24 h-24 rounded-full bg-amber-100 flex items-center justify-center shadow-inner mb-4">
-            {/* Aquí luego puedes poner <img src={context.userData.image} alt="Profile" className="w-full h-full object-cover rounded-full" /> */}
-            
+          <div
+            className={`
+              w-24 h-24 rounded-full flex items-center justify-center shadow-inner mb-4
+              transition-colors duration-700 ease-in-out
+              ${theme === 'Dark' ? 'bg-gray-600' : 'bg-amber-100'}
+            `}
+          >
+            {/* Aquí luego puedes poner la imagen del usuario */}
           </div>
-          <h1 className="text-2xl font-semibold text-gray-800">My Account</h1>
-          <p className="text-gray-500 text-sm mt-1">Manage your profile information</p>
+          <h1
+            className={`
+              text-2xl font-semibold mb-1
+              transition-colors duration-700 ease-in-out
+              ${theme === 'Dark' ? 'text-gray-50' : 'text-gray-800'}
+            `}
+          >
+            My Account
+          </h1>
+          <p
+            className={`
+              text-sm transition-colors duration-700 ease-in-out
+              ${theme === 'Dark' ? 'text-gray-400' : 'text-gray-500'}
+            `}
+          >
+            Manage your profile information
+          </p>
         </div>
 
         {/* Datos del usuario */}
         <div className="space-y-4">
-          <div className="border border-gray-200 rounded-xl p-4 hover:shadow-sm transition-all">
-            <p className="text-sm text-gray-500">Full Name</p>
-            <p className="text-lg font-medium text-gray-800">{parsedUser.name || "—"}</p>
-          </div>
-
-          <div className="border border-gray-200 rounded-xl p-4 hover:shadow-sm transition-all">
-            <p className="text-sm text-gray-500">Date of Birth</p>
-            <p className="text-lg font-medium text-gray-800">{parsedUser.birth || "—"}</p>
-          </div>
-
-          <div className="border border-gray-200 rounded-xl p-4 hover:shadow-sm transition-all">
-            <p className="text-sm text-gray-500">Country</p>
-            <p className="text-lg font-medium text-gray-800">{parsedUser.country || "—"}</p>
-          </div>
+          {[
+            { label: "Full Name", value: parsedUser.name || '--' },
+            { label: "Date of Birth", value: parsedUser.birth || '--'},
+            { label: "Country", value: parsedUser.country || '---'},
+          ].map((item, index) => (
+            <div
+              key={index}
+              className={`
+                border rounded-xl p-4 hover:shadow-md
+                transition-all duration-500 ease-in-out
+                ${theme === 'Dark'
+                  ? 'border-gray-700 bg-gray-700/50 hover:bg-gray-600/70'
+                  : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
+                }
+              `}
+            >
+              <p
+                className={`
+                  text-sm transition-colors duration-700 ease-in-out
+                  ${theme === 'Dark' ? 'text-gray-400' : 'text-gray-500'}
+                `}
+              >
+                {item.label}
+              </p>
+              <p
+                className={`
+                  text-lg font-medium transition-colors duration-700 ease-in-out
+                  ${theme === 'Dark' ? 'text-gray-100' : 'text-gray-800'}
+                `}
+              >
+                {item.value || "—"}
+              </p>
+            </div>
+          ))}
         </div>
 
-        {/* Botón de editar (opcional para futuro) */}
+        {/* Botón de editar o toggle */}
         <div className="mt-8 text-center">
-          <button className="bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-xl transition-all ">
-            Edit Profile
+          <button
+            className={`
+              font-medium py-4 px-12 rounded-xl shadow-lg
+              transition-all duration-500 ease-in-out
+              ${theme === 'Dark'
+                ? 'bg-amber-500 hover:bg-amber-400 text-gray-900'
+                : 'bg-amber-500 hover:bg-amber-600 text-white'
+              }
+            `}
+            onClick={toggleTheme}
+          >
+            {`${theme} mode`}
           </button>
         </div>
       </div>

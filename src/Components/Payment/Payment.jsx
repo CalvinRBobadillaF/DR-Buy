@@ -12,7 +12,7 @@ export default function PaymentComponent() {
   // productos por defecto si no vienen por props
   let context = useContext(WaggonContext)
   const navigate = useNavigate();
-
+ const { theme, toggleTheme } = useContext(WaggonContext)
 
   const [processing, setProcessing] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -53,21 +53,21 @@ export default function PaymentComponent() {
 
   if (context.order == 0) {
         return(
-            <div className="flex items-center justify-center h-screen">
-      <p className="text-center text-lg text-gray-700">
+            <div className={`${theme === 'Dark' ? ' text-white flex items-center justify-center h-screen' : 'bg-white text-black flex items-center justify-center h-screen'}`}>
+      <p className="text-center text-lg ">
         You don't have a recent order, create a new one!
       </p>
     </div>
         )
       }
-
+// max-w-3xl mx-auto
   return (
     <Layout>
-    <div className="max-w-3xl mx-auto  overflow-y-scroll">
+    <div className="  overflow-y-scroll ml-[2vw]">
       {/* Contenedor principal */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* LEFT: Card info (no editable) */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className={`${theme === 'Dark' ? ' rounded-lg shadow p-6' : 'bg-white rounded-lg shadow p-6'}`}>
           <h2 className="text-lg font-semibold mb-4">Payment info</h2>
 
           <label className="block text-sm text-gray-600 mb-1">Owner</label>
@@ -107,7 +107,7 @@ export default function PaymentComponent() {
         </div>
 
         {/* RIGHT: Productos y resumen */}
-        <div className="bg-white rounded-lg shadow p-6 flex flex-col justify-between">
+        <div className="rounded-lg shadow p-6 flex flex-col justify-between">
           <div>
             <h2 className="text-lg font-semibold ">Products</h2>
 
@@ -134,7 +134,7 @@ export default function PaymentComponent() {
             </div>
           </div>
 
-          <div className="mt-3">
+          <div className="mt-3 mb-15">
             <button
               onClick={handlePay}
               disabled={processing}

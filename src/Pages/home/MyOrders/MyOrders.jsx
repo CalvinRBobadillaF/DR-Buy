@@ -6,11 +6,12 @@ import { Link } from "react-router-dom"
 function MyOrders() {
     const context = useContext(WaggonContext)
     console.log('ordenes:', context.order)
+     const { theme, toggleTheme } = useContext(WaggonContext)
 
     if (context.orderPaid == 0) {
         return(
             <div className="flex items-center justify-center h-screen">
-      <p className="text-center text-lg text-gray-700">
+      <p className={`${theme === 'Dark' ? 'text-center text-lg text-white' : 'text-center text-lg text-black'}`}>
         You don't have a recent order, create a new one!
       </p>
     </div>

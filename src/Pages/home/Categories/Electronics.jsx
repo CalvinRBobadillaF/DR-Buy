@@ -27,7 +27,7 @@ function Electronics() {
     
     return (
         <Layout>
-            <div className=" grid md:grid-cols-4 gap-4 w-full max-w-screen-lg sm:grid-cols-2  lg:grid-cols-4 xl:grid-cols-5 ">
+            <div className=" grid md:grid-cols-4 gap-4 md:gap-10 w-full max-w-screen-lg sm:grid-cols-2  lg:grid-cols-4 xl:grid-cols-5 ">
             {
                 electronics?.map((item => (<Card key={item.id} data={item}/>)
                 

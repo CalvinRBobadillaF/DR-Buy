@@ -3,6 +3,7 @@ import { WaggonContext } from '../../../Context/Context'
 
 function SignOn() {
   const context = useContext(WaggonContext)
+  const { theme, toggleTheme } = useContext(WaggonContext)
 
   const [userName, setUserName] = useState('')
   const [userBirth, setUserBirth] = useState('')
@@ -36,10 +37,10 @@ function SignOn() {
   }
 
   return (
-    <div className="flex items-center justify-center mt-20">
+    <div className={`${theme === 'Dark' ? 'flex items-center justify-center mt-[0vh] bg-neutral-700 text-white h-[100vh] mt-20' : 'flex items-center justify-center mt-20 text-black'}`}>
       <div className="w-full max-w-md p-8 space-y-6">
         <h1 className="text-3xl font-bold text-center text-gray-900">
-          {localStorage.getItem('userData') ? 'Bienvenido de nuevo' : 'Iniciar Sesión'}
+          {localStorage.getItem('userData') ? 'Bienvenido de nuevo' : 'log in'}
         </h1>
 
         <form className="space-y-6">
@@ -78,7 +79,7 @@ function SignOn() {
             <input
               onChange={(e) => setUserCountry(e.target.value)}
               type="text"
-              placeholder="Tu país"
+              placeholder="Country"
               className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -93,7 +94,18 @@ function SignOn() {
               Register
             </button>
 
-            <button
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default SignOn
+
+
+/*  <button
               onClick={() => {
                 context.logUser()
                 localStorage.setItem(
@@ -109,12 +121,4 @@ function SignOn() {
               className="w-full px-4 py-2 font-medium text-gray-700 bg-gray-100 rounded-md shadow-sm hover:bg-gray-200"
             >
               Log in as guest
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  )
-}
-
-export default SignOn
+            </button> */

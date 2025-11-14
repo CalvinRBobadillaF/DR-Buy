@@ -3,6 +3,7 @@ import { WaggonContext } from "../../../Context/Context"
 
 function Card(data) {
     const Context = useContext(WaggonContext)
+    const { theme, toggleTheme } = useContext(WaggonContext)
     
     const addProductToCart = (e, productData) => {
         e.stopPropagation(); // Prevent event propagation to the main div
@@ -40,10 +41,10 @@ function Card(data) {
     
     return (
         <div 
-            className="bg-white w-56 ml-0.5 cursor-pointer  lg:h-60 sm:h-80 rounded-lg sm:mb-6 " 
+            className={`${theme === 'Dark' ? '  w-56  ml-[1vw] md:ml-[2vw]   cursor-pointer lg:h-[50vh]    rounded-lg sm:mb-6 ' : 'bg-white w-56 ml-[1vw] cursor-pointer  lg:h-[50vh]  rounded-lg sm:mb-6 '}`}
             onClick={() => showProduct(data.data)}
         >
-            <figure className="relative m-3 mb-0 w-100 h-4/5  ">
+            <figure className="relative m-3 mb-0 w-[93vw]  sm:w-[20vw]  md:w-[21vw] h-4/5  ">
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black m-2 text-m lg:text-lg px-3 py-0.5 ">
                     {data.data.category.name}
                 </span>
@@ -53,7 +54,7 @@ function Card(data) {
                     className="w-full h-full object-cover rounded-t-md"
                 />
                 <button 
-                    className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 text-black font-bold"
+                    className={`${theme === 'dark' ? 'absolute top-0 right-0 flex justify-center items-center bg-gray-700 w-6 h-6 rounded-full m-2 text-white font-bold' : 'absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 text-black font-bold'}absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 text-black font-bold`}
                     onClick={(e) => addProductToCart(e, data.data)}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5">
@@ -61,7 +62,7 @@ function Card(data) {
                     </svg>
                 </button>
             </figure>
-            <p className="flex justify-between ml-3 bg-gray-200 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-100">
+            <p className={`${theme === 'Dark' ? 'flex justify-between ml-3 md:w-[21vw] bg-neutral-700 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-[93vw] ' : 'flex justify-between ml-3 bg-gray-200 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-[93vw] md:w-[21vw]'}`}>
                 <span className=" text">{data.data.title}</span>
                 <span className="font-medium ">${data.data.price}</span>
             </p>

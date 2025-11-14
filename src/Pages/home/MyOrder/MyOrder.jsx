@@ -6,6 +6,7 @@ import { WaggonContext } from "../../../Context/Context"
 import { Link } from "react-router-dom"
 function MyOrder() {
     let context = useContext(WaggonContext)
+    const { theme, toggleTheme } = useContext(WaggonContext)
     
     const totalPrice = context.cartProducts.reduce((sum, product) => 
         sum + product.price * (product.quantity || 1), 0
@@ -14,7 +15,7 @@ function MyOrder() {
     if (context.order == 0) {
   return (
     <div className="flex items-center justify-center h-screen  ">
-      <p className="text-center  text-lg  text-gray-700 ">
+      <p className={`${theme === 'Dark' ? 'text-center  text-lg text-white ' : 'text-center  text-lg text-gray-600 '}text-center  text-lg   `}>
        You don't have a recent order, create a new one!
       </p>
     </div>
@@ -35,7 +36,7 @@ function MyOrder() {
             <h1>My order</h1>
 
             </div>
-        <div className="flex flex-col ml-5">
+        <div className="flex flex-col ml-[2vw]">
             
                 {
                     context.order?.slice(-1)[0].products.map(product => (
@@ -55,7 +56,7 @@ function MyOrder() {
             </div>
 <NavLink to='/payment'>
             <div>
-                <button className="px-15 py-5 bg-blue-950 text-amber-50 absolute bottom-25 right-15 left-15 rounded-md">Pay now</button>
+                <button className={`${theme === 'Dark' ? 'bg-blue-900 text-white' : 'bg-blue-700 text-black'}px-15 py-5 text-amber-50  absolute bottom-25 right-15 left-15 rounded-md`}>Pay now</button>
 
             </div>
             </NavLink>

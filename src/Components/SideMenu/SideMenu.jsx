@@ -5,6 +5,7 @@ import { WaggonContext } from "../../Context/Context";
 function SideMenu() {
   const Context = useContext(WaggonContext);
   const isMenuOpen = Context.isSideMenuOpen;
+  const { theme, toggleTheme } = useContext(WaggonContext)
 
   return (
     <>
@@ -18,7 +19,7 @@ function SideMenu() {
 
       {/* Panel lateral */}
       <aside
-        className={`fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
+        className={`${theme === 'Dark' ? 'fixed top-0 right-0 z-50 h-full w-72 bg-gray-700 shadow-lg transform transition-transform duration-300 ease-in-out' : 'fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-lg transform transition-transform duration-300 ease-in-out'}
         ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
         md:hidden`}
       >
