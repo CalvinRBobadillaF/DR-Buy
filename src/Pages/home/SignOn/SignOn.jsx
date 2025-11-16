@@ -39,8 +39,8 @@ function SignOn() {
   return (
     <div className={`${theme === 'Dark' ? 'flex items-center justify-center mt-[0vh] bg-neutral-700 text-white h-[100vh] mt-20' : 'flex items-center justify-center mt-20 text-black'}`}>
       <div className="w-full max-w-md p-8 space-y-6">
-        <h1 className="text-3xl font-bold text-center text-gray-900">
-          {localStorage.getItem('userData') ? 'Bienvenido de nuevo' : 'log in'}
+        <h1 className="text-3xl font-bold text-center text-gray-300">
+          {localStorage.getItem('userData') ? 'Welcome Back' : 'log in'}
         </h1>
 
         <form className="space-y-6">

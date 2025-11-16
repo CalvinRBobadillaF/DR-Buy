@@ -10,7 +10,7 @@ import MyOrders from "../MyOrders/MyOrders";
 import NavBar from "../../../Components/NavBar/NavBar";
 import Layout from "../../../Components/NavBar/Layout/Layout";
 import CheckoutSideMenu from "../../../Components/checkoutSideMenu/checkoutSM";
-import "./App.css";
+
 import ToggleTheme from "../../../Components/ToggleTheme";
 import Electronics from "../Categories/Electronics";
 import Clothes from "../Categories/Clothes";

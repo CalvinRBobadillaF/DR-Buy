@@ -10,8 +10,9 @@ function NavBar() {
   const isMenuOpen = Context.isSideMenuOpen
   console.log(isMenuOpen)
   const ActiveStyle = "flex";
-  
-  
+  const storedUser = localStorage.getItem('userData')
+  const parsedUser = JSON.parse(storedUser)
+  console.log(parsedUser)
   
 
 
@@ -22,12 +23,12 @@ function NavBar() {
   
   return(
     
-    <nav className={`${Context.theme == 'Dark' ? 'justify-between items-center fixed  md:sticky lg:sticky  transition-colors duration-500 ease-in-out shadow-lg bg-gray-800   z-16  w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0' : 'justify-between items-center fixed  md:sticky lg:sticky bg-gray-200 transition-colors duration-500 ease-in-out shadow-lg z-16  w-full py-3 px-4 text-sm font-medium bottom-0 md:top-0'} `}
+    <nav className={`${Context.theme == 'Dark' ? 'justify-between items-center fixed  lg:sticky  transition-colors duration-500 ease-in-out shadow-lg bg-gray-700   z-16  w-full py-3 px-4 text-sm font-medium bottom-0 lg:top-0' : 'justify-between items-center fixed  lg:sticky  transition-colors duration-500 ease-in-out shadow-lg bg-gray-300   z-16  w-full py-3 px-4 text-sm font-medium bottom-0 lg:top-0'} `}
     >
-      <div className="  flex justify-between items-center ">
+      <div className="  flex justify-between items-center w-full ">
         
-        <ul className="flex justify-between items-center w-full   lg:w-150 px-4 text-xs">
-          <li className="font-semibold text-lg hidden md:block" onClick={ Context.closeDetail}>
+        <ul className="flex justify-between items-center w-full lg:w-150 px-4  text-xs">
+          <li className="font-semibold text-lg hidden lg:block" onClick={ Context.closeDetail}>
             <NavLink to="/" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
               RD-Buy
             </NavLink>
@@ -107,46 +108,46 @@ function NavBar() {
         </ul>
 
         {/* Right menu */} 
-        <ul className='md:flex items-center   gap-3 fixed top-0 left-0 md:left-10 bg-gray-300'>
+        <ul className='md:flex items-center   gap-3  top-0 left-0  '>
           <li>
-            <NavLink to="/sign-in" className={isMenuOpen ? 'flex z-10 sticky px-3 py-108 ' : 'hidden md:flex'}>
-              Bobadilla@xample.com
+            <NavLink to="/" className={isMenuOpen ? 'flex z-10 sticky px-3 py-108 ' : 'hidden lg:flex'}>
+              {parsedUser.name}
             </NavLink>
           </li>
 
-          <li className="font-semibold text-2xl fixed ml-[40vw]  top-2 md:block">
+          <li className="font-semibold text-2xl  fixed left-[40vw] sm:left-[45vw] lg:hidden   top-2  ">
             <NavLink to="/" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
               RD-Buy
             </NavLink>
           </li>
 
           <li className="" onClick={Context.openMenu}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-8 w-8 fixed right-3 top-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-8 w-8 lg:hidden lg:right-7 fixed right-3 top-3">
   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 </svg>
 
           </li>
 
           <li className="hidden md:block">
-            <NavLink to="/my-order" className={isMenuOpen ? 'flex' : 'hidden md:flex'}>
+            <NavLink to="/my-order" className={isMenuOpen ? 'flex' : 'hidden lg:flex'}>
               My-order
             </NavLink>
           </li>
 
           <li className=" md:block">
-            <NavLink to="/my-orders" className={isMenuOpen ? 'flex' : 'hidden md:flex'}>
+            <NavLink to="/my-orders" className={isMenuOpen ? 'flex' : 'hidden lg:flex'}>
               My-orders
             </NavLink>
           </li>
 
           <li className="hidden md:block">
-            <NavLink to="/my-account" className={isMenuOpen ? 'flex' : 'hidden md:flex'}>
+            <NavLink to="/my-account" className={isMenuOpen ? 'flex' : 'hidden lg:flex'}>
               My-Account
             </NavLink>
           </li>
 
-          <li className="hidden md:flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+          <li className="hidden lg:flex items-center gap-2 ">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5  w-5">
               <path fillRule="evenodd" d="M6 5v1H4.667a1.75 1.75 0 0 0-1.743 1.598l-.826 9.5A1.75 1.75 0 0 0 3.84 19H16.16a1.75 1.75 0 0 0 1.743-1.902l-.826-9.5A1.75 1.75 0 0 0 15.333 6H14V5a4 4 0 0 0-8 0Zm4-2.5A2.5 2.5 0 0 0 7.5 5v1h5V5A2.5 2.5 0 0 0 10 2.5ZM7.5 10a2.5 2.5 0 0 0 5 0V8.75a.75.75 0 0 1 1.5 0V10a4 4 0 0 1-8 0V8.75a.75.75 0 0 1 1.5 0V10Z" clipRule="evenodd" />
             </svg>
             <div>{Context.Count}</div>
@@ -173,4 +174,6 @@ export default NavBar;
                 `${isActive ? ActiveStyle : ""} flex flex-col items-center justify-center text-xs md:text-sm`
               }>
 </NavLink>
+
+fixed
               */

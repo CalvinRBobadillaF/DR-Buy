@@ -41,10 +41,10 @@ function Card(data) {
     
     return (
         <div 
-            className={`${theme === 'Dark' ? '  w-56  ml-[1vw] md:ml-[2vw]   cursor-pointer lg:h-[50vh]    rounded-lg sm:mb-6 ' : 'bg-white w-56 ml-[1vw] cursor-pointer  lg:h-[50vh]  rounded-lg sm:mb-6 '}`}
+            className={`${theme === 'Dark' ? '   w-56 sm:w-[40vw]  ml-[1vw] md:ml-[2vw]   cursor-pointer lg:h-[50vh]    rounded-lg sm:mb-6 ' : 'bg-white w-56 ml-[1vw] cursor-pointer sm:w-[40vw]  lg:h-[50vh]  rounded-lg sm:mb-6 '}`}
             onClick={() => showProduct(data.data)}
         >
-            <figure className="relative m-3 mb-0 w-[93vw]  sm:w-[20vw]  md:w-[21vw] h-4/5  ">
+            <figure className="relative m-3 mb-0 w-[93vw] lg:w-[21vw]  sm:w-[40vw] md:w-[40vw] h-4/5  ">
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black m-2 text-m lg:text-lg px-3 py-0.5 ">
                     {data.data.category.name}
                 </span>
@@ -62,7 +62,7 @@ function Card(data) {
                     </svg>
                 </button>
             </figure>
-            <p className={`${theme === 'Dark' ? 'flex justify-between ml-3 md:w-[21vw] bg-neutral-700 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-[93vw] ' : 'flex justify-between ml-3 bg-gray-200 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-[93vw] md:w-[21vw]'}`}>
+            <p className={`${theme === 'Dark' ? 'flex justify-between ml-3 md:w-[40vw] lg:w-[21vw] sm:w-[40vw] bg-neutral-700 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-[93vw] ' : 'flex justify-between ml-3 md:w-[40vw] lg:w-[21vw] sm:w-[40vw] bg-gray-300 p-2.5 rounded-b-lg mt-0 shadow-5 text-2xl w-[93vw]'}`}>
                 <span className=" text">{data.data.title}</span>
                 <span className="font-medium ">${data.data.price}</span>
             </p>

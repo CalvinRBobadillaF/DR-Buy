@@ -1,70 +1,79 @@
 import { useContext } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import Layout from "../../../Components/NavBar/Layout/Layout"
 import OrderCard from "../../../Components/OrderCard/OrderCard"
 import { WaggonContext } from "../../../Context/Context"
-import { Link } from "react-router-dom"
-function MyOrder() {
-    let context = useContext(WaggonContext)
-    const { theme, toggleTheme } = useContext(WaggonContext)
-    
-    const totalPrice = context.cartProducts.reduce((sum, product) => 
-        sum + product.price * (product.quantity || 1), 0
-      )
 
-    if (context.order == 0) {
+function MyOrder() {
+  let context = useContext(WaggonContext)
+  const { theme } = useContext(WaggonContext)
+
+  const totalPrice = context.cartProducts.reduce(
+    (sum, product) => sum + product.price * (product.quantity || 1), 0
+  );
+
+  if (context.order == 0) {
+    return (
+      <div className="flex items-center justify-center h-screen px-4 lg:ml-[10vw]">
+        <p
+          className={`${theme === 'Dark' ? 'text-white' : 'text-gray-600'} text-center text-lg`}
+        >
+          You don't have a recent order, create a new one!
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex items-center justify-center h-screen  ">
-      <p className={`${theme === 'Dark' ? 'text-center  text-lg text-white ' : 'text-center  text-lg text-gray-600 '}text-center  text-lg   `}>
-       You don't have a recent order, create a new one!
-      </p>
-    </div>
+    <Layout>
+      <div className="flex justify-between items-center m-3 ml-[7vw] md:ml-[7vw] ">
+        <Link to="/">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </Link>
+
+        <h1 className={`${theme === 'Dark' ? 'text-white' : 'text-gray-700'}   text-lg font-semibold`}>
+          My order
+        </h1>
+
+        <div className="w-6" />
+      </div>
+
+      <div className="flex flex-col ml-[6vw] space-y-3 mb-5">
+        {context.order?.slice(-1)[0].products.map(product => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            image={product.images}
+            title={product.title}
+            price={product.price}
+            quantity={product.quantity || 1}
+          />
+        ))}
+
+        <p className={`${theme === 'Dark' ? 'text-white' : 'text-gray-700'} text-center font-semibold`}>
+          Total amount: ${totalPrice.toFixed(2)}
+        </p>
+      </div>
+
+      <NavLink to="/payment">
+        <button
+          className={`${theme === 'Dark' ? 'bg-blue-900 text-white' : 'bg-blue-700 text-black'} 
+           bottom-25 left-4 right-4 px-25 py-4 md:px-5 md:py-5 rounded-md text-center md:w-[20vw] md:ml-[7vw] ml-[6vw] md:mb-40  mb-30  text-amber-50 shadow-lg`}
+        >
+          Pay now
+        </button>
+      </NavLink>
+    </Layout>
   );
 }
 
-    return(
-       <Layout>
-        <div className="flex justify-between m-3">
-            <Link to="/">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-            
-            </svg>
-            </Link>
-            
-
-            <h1>My order</h1>
-
-            </div>
-        <div className="flex flex-col ml-[2vw]">
-            
-                {
-                    context.order?.slice(-1)[0].products.map(product => (
-                        <OrderCard 
-                            key={product.id}  
-                            id={product.id}
-                            image={product.images} 
-                            title={product.title} 
-                            price={product.price}
-                            quantity={product.quantity || 1}
-                            
-                        />
-                    ))
-                }
-
-                <p className="flex justify-center">Total amount: ${totalPrice.toFixed(2)}</p>
-            </div>
-<NavLink to='/payment'>
-            <div>
-                <button className={`${theme === 'Dark' ? 'bg-blue-900 text-white' : 'bg-blue-700 text-black'}px-15 py-5 text-amber-50  absolute bottom-25 right-15 left-15 rounded-md`}>Pay now</button>
-
-            </div>
-            </NavLink>
-       </Layout>
-        
-    )
-}
-       
-
-
-export default MyOrder 
+export default MyOrder;

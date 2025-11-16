@@ -10,7 +10,7 @@ function ProductDetail() {
 
 
     return(
-        <aside className={`${context.isDetailOpen ? 'flex ' : 'hidden '} ${theme === 'Dark' ? 'bg-neutral-700 top-[0] md:top-[80px] w-[full] h-[full] md:w-[360px] md:h-[100vh-80px]   flex-col fixed right-0  border border-black rounded-lg bottom-4' : 'bg-white top-[0] md:top-[80px] w-[full] h-[full] md:w-[360px] md:h-[100vh-80px]   flex-col fixed right-0  border border-black rounded-lg bottom-4'}`}>
+        <aside className={`${context.isDetailOpen ? 'flex ' : 'hidden '} ${theme === 'Dark' ? 'bg-neutral-700 top-[0] md:mt-[5vh] lg:mt-[10vh] lg:h-[85vh] overflow-y-scroll w-[full] h-[full] md:w-[360px] sm:h-[85vh]      flex-col fixed right-0  border border-black rounded-lg bottom-4 md:bottom-0' : 'bg-white top-[0] md:top-[80px] w-[full] h-[full] md:w-[360px] md:h-[100vh-80px]   flex-col fixed right-0  border border-black rounded-lg bottom-4'}`}>
         <div className="flex  m-4 mt-15">
             <button onClick={() => context.closeDetail()}  className=" ">
             
@@ -22,7 +22,7 @@ function ProductDetail() {
             
             </div>
             <figure>
-                <img className="w-full h-full p-2" src={context.showDetail.images} alt={context.showDetail.title} />
+                <img className="w-full h-full   p-2" src={context.showDetail.images} alt={context.showDetail.title} />
             </figure>
             <p className="text-center font-bold p-1 bg-gray-600 text-white text-lg">
                 

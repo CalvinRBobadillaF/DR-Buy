@@ -154,7 +154,7 @@ export default function PaymentComponent() {
 
           {/* Card del mensaje */}
           <div className="relative z-10 bg-white rounded-lg p-6 shadow-xl w-80 text-center">
-            <h3 className="text-xl font-semibold mb-2">Payment processed</h3>
+            <h3 className="text-xl font-semibold mb-2 text-black">Payment processed</h3>
             <p className="text-gray-600" >Thank you! — Your payment was processed correctly.</p>
           </div>
         </div>

@@ -6,7 +6,7 @@ import OrderCard from "../OrderCard/OrderCard"
 function CheckoutSideMenu() {
     const context = useContext(WaggonContext)
     console.log('Cart: ', context.cartProducts)
-    const { theme, toggleTheme } = useContext(WaggonContext)
+    const { theme } = useContext(WaggonContext)
     
     const handleDelete = (id) => {
         
@@ -49,10 +49,10 @@ function CheckoutSideMenu() {
 
       if (context.cartProducts == 0) {
         return(
-            <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '} ${theme === 'Dark' ? 'bg-neutral-600 md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)]  flex-col justify-center fixed right-0  md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto ' : 'bg-amber-50 md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)]  flex-col justify-center fixed right-0  md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto'}`}>
+            <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '} ${theme === 'Dark' ? 'bg-neutral-600  md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)]  flex-col justify-center fixed right-0  md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto ' : 'bg-amber-50 md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)]  flex-col justify-center fixed right-0  md:border border-black rounded-lg bottom-4 mb-2  overflow-y-auto'}`}>
             
-                <div className="flex items-center justify-center h-screen">
-      <p className={`${theme === 'Dark' ? 'text-white' : 'text-gray-700'}text-center text-lg  `}>
+                <div className="flex items-center justify-center h-screen ml-[2vw] ">
+      <p className={`${theme === 'Dark' ? 'text-white' : 'text-gray-700'}text-center text-lg   `}>
         You don't have any products yet, start shopping!
       </p>
     </div>
@@ -62,13 +62,13 @@ function CheckoutSideMenu() {
       }
     
     return(
-        <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '} ${theme === 'Dark' ? 'bg-neutral-600' : 'bg-white'} md:top-[68px] top-[0] md:w-[360px] w-full md:h-[calc(100vh-80px)] h-[calc(100vh-65px)] flex-col fixed right-0   md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
+        <aside className={`${context.isCheckoutOpen ? 'flex ' : 'hidden '} ${theme === 'Dark' ? 'bg-neutral-600' : 'bg-white'}  md:top-[10px]  top-[0] md:w-[360px] w-full lg:h-[90vh] lg:mt-20 md:h-[calc(100vh-60px)] h-[calc(100vh-65px)] flex-col fixed right-0   md:border border-black rounded-lg bottom-4 mb-2 overflow-y-auto`}>
             <div className="flex justify-between m-4">
                 <p className="bg-gray-400 border border-transparent rounded-sm p-1 font-medium text-x">My Order</p>
                 
             </div>
             
-            <div className="flex-1 px-4">
+            <div className="flex-1  px-4">
                 {
                     context.cartProducts.map(product => (
                         <OrderCard 
