@@ -24,6 +24,7 @@ import PaymentComponent from "../../../Components/Payment/Payment";
 function AppRoutes() {
   const routes = useRoutes([
     { path: "/", element: <Home /> },
+    { path: "/DR-Buy", element: <Home /> },
     { path: "/my-orders", element: <MyOrders /> },
     { path: "/my-order", element: <MyOrder /> },
     { path: "/my-orders/latest", element: <MyOrder /> },
