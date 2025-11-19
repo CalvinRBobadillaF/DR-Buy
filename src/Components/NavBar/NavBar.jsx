@@ -122,7 +122,7 @@ function NavBar() {
 
           <li className="font-semibold text-2xl  fixed left-[40vw] sm:left-[45vw] lg:hidden   top-2  ">
             <NavLink to="/" className={({ isActive }) => (isActive ? ActiveStyle : undefined)}>
-              RD-Buy
+              DR-Buy
             </NavLink>
           </li>
 

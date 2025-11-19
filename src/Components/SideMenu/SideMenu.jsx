@@ -43,17 +43,17 @@ function SideMenu() {
 
         <ul className="flex flex-col gap-4 p-6">
           <li >
-            <NavLink to="/my-account" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
+            <NavLink to="DR-Buy/my-account" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
             My Account
             </NavLink>
           </li>
           <li >
-            <NavLink to="/my-orders" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
+            <NavLink to="DR-Buy/my-orders" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
               My Orders
             </NavLink>
           </li>
           <li >
-            <NavLink to="/my-order" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
+            <NavLink to="DR-Buy/my-order" onClick={() => { Context.closeDetail?.(); Context.closeCheckout?.(); Context.openAndCloseMenu?.(); }}>
               My Order
             </NavLink>
           </li>
@@ -67,7 +67,7 @@ function SideMenu() {
         </ul>
         <div className="flex justify-between items-center p-4 w-full border-t fixed bottom-3">
           <h2>
-            <NavLink to="/sign-in" className= 'text-lg font-semibold '>
+            <NavLink to="/" className= 'text-lg font-semibold '>
               {parsedUser.name}
             </NavLink>
           </h2>
